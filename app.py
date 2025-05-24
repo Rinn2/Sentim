@@ -8,10 +8,10 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-# Gunakan nama folder yang benar
+# Inisialisasi Flask
 app = Flask(__name__, template_folder='Frontend', static_folder='style')
 
-# Coba load model dan tokenizer
+# Load model dan tokenizer
 try:
     MODEL_PATH = 'model'
     tokenizer = BertTokenizer.from_pretrained(MODEL_PATH)
@@ -29,6 +29,7 @@ except Exception as e:
     model = None
     INDEX2LABEL = {}
 
+# Routing halaman
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -46,12 +47,10 @@ def predict():
     if request.method == 'POST':
         text_input = request.form['text']
 
-        # Jika model/tokenizer gagal dimuat
         if tokenizer is None or model is None:
             return render_template('analisis.html', input_text=text_input, result='Model loading error.')
 
         try:
-            # Tokenisasi dan prediksi
             inputs = tokenizer(text_input, return_tensors="pt", padding=True, truncation=True, max_length=512)
             inputs = {k: v.to(device) for k, v in inputs.items()}
 
@@ -61,7 +60,7 @@ def predict():
             prediction_index = torch.argmax(output.logits, dim=1).item()
             result = INDEX2LABEL[prediction_index]
 
-            # Ubah format hasil sedikit untuk tampilan frontend
+            # Terjemahkan label ke Bahasa Indonesia
             if result == 'Positive':
                 display_result = 'Positif'
             elif result == 'Negative':
@@ -75,5 +74,7 @@ def predict():
             logger.error(f"Prediction error: {e}")
             return render_template('analisis.html', input_text=text_input, result='Prediction error.')
 
+# Entry point utama (diperbaiki untuk deployment)
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8000))  # Railway menyediakan PORT
+    app.run(host='0.0.0.0', port=port)
