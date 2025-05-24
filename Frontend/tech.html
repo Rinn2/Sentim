@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodMiner - Teknologi</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='tech.css') }}">
+    <style>
+
+    </style>
+</head>
+<body>
+    <nav class="nav-wrapper">
+        <div class="main-nav">
+             <a href="{{ url_for('home') }}">Beranda</a>
+            <a href="{{ url_for('analisis') }}">Analisis</a>
+            <a href="#fitur">Fitur</a>
+            <a href="{{ url_for('tech') }}">Teknologi</a>
+        </div>
+    </nav>
+
+    <section class="tech-hero container">
+        <div class="tech-hero-content">
+            <div class="tech-hero-text">
+                <h1 class="tech-hero-title">MoodMiner</h1>
+                <p class="tech-hero-description">
+                    Kombinasi mutakhir teknologi kecerdasan buatan dan analisis data untuk menghasilkan wawasan sentimen yang mendalam dan akurat.
+                </p>
+            </div>
+            <div class="tech-cards">
+                <div class="tech-card">
+                    <div class="tech-card-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="tech-card-title">Python</h3>
+                    <p class="tech-card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    </p>
+                </div>
+              
+                <div class="tech-card">
+                    <div class="tech-card-icon">
+                        <i class="ri-brain-line"></i>
+                    </div>
+                    <h3 class="tech-card-title">TensorFlow</h3>
+                    <p class="tech-card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    </p>
+                </div>
+                  <div class="tech-card">
+                    <div class="tech-card-icon">
+                        <i class="ri-code-line"></i>
+                    </div>
+                    <h3 class="tech-card-title">HTML & CSS</h3>
+                    <p class="tech-card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-card-icon">
+                        <i class="ri-server-line"></i>
+                    </div>
+                    <h3 class="tech-card-title">Framework Web</h3>
+                    <p class="tech-card-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
